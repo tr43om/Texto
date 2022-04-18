@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Frontend Mentor - Interactive comments section solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, Read, Update, and Delete comments and replies
+- Upvote and downvote comments
+- **Bonus**: If you're building a purely front-end project, use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
+- **Bonus**: Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
 
-### `npm run build`
+### Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./reg-texto.png)
+![](./texto.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Links
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- - Solution URL: [Add solution URL here](https://your-solution-url.com) -->
 
-### `npm run eject`
+- Live Site URL: [Add live site URL here](https://interactive-comment-sect-a2a31.web.app/register)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## My process
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Built with
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- [React](https://reactjs.org/) - JS library
+- [Framer Motion](https://www.framer.com/motion/) - Framer is a tool built for interactive design. This library made possible to create animation when components mounts/unmounts on the page. With this tool I made transitions between pages, animation when comment or reply is added or deleted.
+- [Firebase](https://firebase.google.com/) - Firebase is a Backend-as-a-Service (Baas). It provides developers with a variety of tools and services. I used firebase for storing comments, replies and users in database and retrieve them as needed. Also, with authentication service I've implemented sign in / sign up feature
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### What I learned
 
-## Learn More
+This is my first personal React project I've built. Throughout building process I learned many things such as:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Firebase
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I've never worked with database before and I always thought that it is something really complicated for me. However, firebase has really good documentation and there are many tutorials out there how to implement many cool things with Firebase. I learned how to create, update, read, delete data with Firestore Database and also how to authenticate users with authentication tools they provides. I really enjoyed implementing firestore to my project :)
 
-### Code Splitting
+#### Power of custom hooks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project consist of hundreds and even thousands lines of code and it would be a real mess without custom hook I used. I made 10 custom hooks:
 
-### Analyzing the Bundle Size
+- **useAuthContext** I used context in many places and each time import same things is pretty bad practice. So this hook make my code cleaner and easier to maintain my context
+- **useCollection** This hook was really helpful. The hook takes 3 arguments: collection name, which documents I want to get (query) and in which order I want to see them.
+- **useCurrentUser** It contains data of loged in user
+- **useFirestore** All functions I need for delete, add and update my data from Firestore database are there
+- **useGoogleLogin, useLogout, useLogin, useSignup** These hooks deal with firebase authentications. By the titles of the hooks you can guess what they used for :)
+- **useTimePassed** This is just reusable code for finding out how many time have passed since the user posted comment/reply
+- **useVote** There is functionality for voting up/down comments and replies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Reducer and context
 
-### Making a Progressive Web App
+The context is designed for storing information about authentication status. Context answers questions like: user logged in or not? is authentication ready?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+I used reducer to handle cases connected with authentication. Like log in, sign up, sign out. I passed dispatch function into context and then when I needed I used it to update authentication status of the webpage
 
-### Advanced Configuration
+#### Animation in React with Framer Motion
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+I'm really glad that there are libraries that helps create animation when components mounts or unmounts. Before I found such libraries, I puzzled through a lot how could I implement animations without libraries and decided not to use animation in project at all, because it would be really hard to implement animations without Framer Motion.
 
-### Deployment
+With this tool I made transitions between pages and animation when comment or reply is added or deleted.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+It was super easy to deal with. All I need was to import 2 components and define how element should look like initially (initial), how it should look like when it appeared on the screen (animate) and how should it disappear from the page (exit).
 
-### `npm run build` fails to minify
+Let's bring comments, as an example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```jsx
+import { AnimatePresence, motion } from "framer-motion";
+
+<AnimatePresence>
+  {comments.map((comment) => (
+    <motion.div
+      key={comment.id}
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.75, 0.5, 1.25] }}
+    >
+      <Comment id={comment.id} comment={comment} />
+    </motion.div>
+  ))}
+</AnimatePresence>;
+```
+
+### Continued development
+
+In future projects I want to learn more Firebase and toold they provide. There is also many concepts and techniques in React i need to refine and perfect.
+
+Also I realised that it would be super helpful to use github commits to revert to previous changes, as I experimented a lot.
+
+### Useful resources
+
+- [UI Avatars](https://ui-avatars.com/) - This helped me to generate avatars for users who don't have profile picture. This tool generates avatar based on user's initials.
+- [Font Awesome. How to add icons in React](https://fontawesome.com/v6/docs/web/use-with/react/add-icons) - This is an amazing article which helped me finally understand how to use font awesome icons in react
+- [Net Ninja](https://www.youtube.com/c/TheNetNinja) - This guy helped me understand many concepts in React and Firebase. His tutorials are super useful and easy understand
