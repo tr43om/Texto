@@ -38,9 +38,9 @@ Users should be able to:
 
 ### Links
 
-<!-- - Solution URL: [Add solution URL here](https://your-solution-url.com) -->
+- Live Site URL: [Texto](https://interactive-comment-sect-a2a31.web.app/register)
 
-- Live Site URL: [Add live site URL here](https://interactive-comment-sect-a2a31.web.app/register)
+- Solution URL: [Solution on frontendmentor.io ](https://www.frontendmentor.io/solutions/interactive-comments-with-authentication-reactfirebase-rkv8W0c4c)
 
 ## My process
 
@@ -64,7 +64,7 @@ I've never worked with database before and I always thought that it is something
 
 #### Power of custom hooks
 
-This project consist of hundreds and even thousands lines of code and it would be a real mess without custom hook I used. I made 10 custom hooks:
+This project consist of hundreds and even thousands lines of code and it would be a real mess without custom hooks I used. I made 10 custom hooks:
 
 - **useAuthContext** I used context in many places and each time import same things is pretty bad practice. So this hook make my code cleaner and easier to maintain my context
 - **useCollection** This hook was really helpful. The hook takes 3 arguments: collection name, which documents I want to get (query) and in which order I want to see them.
