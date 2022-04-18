@@ -1,0 +1,113 @@
+// styles reset
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  all: unset;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+// custom variables
+
+:root {
+  --c-accent: #5457b6;
+  --c-accent-light: hsl(239, 57%, 85%);
+  --c-soft-red: #ed6468;
+  --c-soft-red-light: hsl(357, 100%, 86%);
+
+  --c-secondary: hsl(0, 0%, 100%);
+  --c-primary: hsl(228, 33%, 97%);
+
+  --c-text: hsl(211, 10%, 45%);
+
+  // - Pale red:
+
+  // ### Neutral
+
+  // - Dark blue: hsl(212, 24%, 26%)
+  // - Grayish Blue:
+  // - Light gray: hsl(223, 19%, 93%)
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  background: var(--с-primary);
+}
+
+.container {
+  width: min(100%, 50rem);
+  // max-width: 50rem;
+  margin: 0 auto;
+  padding-block: 2rem;
+  padding-inline: 2rem;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  & > * {
+    padding-block: 1rem;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+  background-color: var(--c-accent);
+  color: var(--c-secondary);
+  font-weight: 800;
+  padding: 0.8rem 1.8rem;
+  border-radius: 10px;
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+
+  @media screen and (min-width: 60em) {
+    font-size: 1rem;
+  }
+
+  &:hover {
+    background-color: var(--c-accent-light);
+  }
+}

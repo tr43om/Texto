@@ -1,0 +1,44 @@
+.navbar {
+  padding-inline: 1.5rem;
+  padding-top: 1.5rem;
+  width: 100%;
+  max-width: 66rem;
+  justify-content: space-between;
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  background: #fff;
+
+  &__logo {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--c-accent);
+    font-weight: normal;
+    font-size: 1.8rem;
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__username {
+    font-weight: bold;
+    display: none;
+    padding-right: 1rem;
+
+    @media screen and (min-width: 60em) {
+      display: block;
+    }
+  }
+
+  &__user-image {
+    width: 3rem;
+    border-radius: 50%;
+    margin-right: 1.5rem;
+  }
+}

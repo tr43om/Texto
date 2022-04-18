@@ -1,0 +1,29 @@
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.6rem;
+  font-weight: 600;
+  padding-block: 0.7rem;
+  background-color: #fff;
+  color: var(--c-accent);
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  text-decoration: none;
+}
+
+.socials {
+  width: 100%;
+  align-self: center;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+
+  & > * {
+    flex-basis: 100%;
+    font-size: 1rem;
+  }
+}

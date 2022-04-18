@@ -1,0 +1,42 @@
+.form {
+  background: var(--c-secondary);
+  margin-top: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  position: sticky;
+  bottom: 0;
+
+  @media screen and (min-width: 60em) {
+    flex-wrap: nowrap;
+    align-items: start;
+  }
+
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  &__button {
+    margin-left: auto;
+  }
+
+  &__image {
+    @media screen and (min-width: 60em) {
+      order: -1;
+    }
+    height: 2.7rem;
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+
+  &__input {
+    resize: none;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0.7rem 1.3rem;
+    min-height: 7rem;
+  }
+
+  &__input:focus {
+    outline: none;
+  }
+}
