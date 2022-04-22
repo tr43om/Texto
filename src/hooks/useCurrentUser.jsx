@@ -1,14 +1,14 @@
 import { useAuthContext } from "./useAuthContext";
 
 export const useCurrentUser = () => {
-  const { user: data } = useAuthContext();
+  const { user: loggedInUser } = useAuthContext();
 
   const user = {
-    username: data.displayName,
-    uid: data.uid,
-    image: !data.photoURL
-      ? `https://ui-avatars.com/api/?name=${data.displayName}&background=random&rounded=true`
-      : data.photoURL,
+    username: loggedInUser.displayName,
+    uid: loggedInUser.uid,
+    image: !loggedInUser.photoURL
+      ? `https://ui-avatars.com/api/?name=${loggedInUser.displayName}&background=random&rounded=true`
+      : loggedInUser.photoURL,
   };
 
   return user;

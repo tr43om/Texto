@@ -10,7 +10,7 @@ import { useCurrentUser } from "../../hooks/useCurrentUser";
 // framer motion
 import { AnimatePresence, motion } from "framer-motion";
 
-export const ReplyForm = ({ replyTo, showReplyForm }) => {
+export const ReplyForm = ({ replyTo, showReplyForm, replyToUsername }) => {
   const [text, setText] = useState("");
   const { addDocument } = useFirestore("replies");
 
@@ -27,7 +27,7 @@ export const ReplyForm = ({ replyTo, showReplyForm }) => {
     ) {
       e.preventDefault();
       addDocument({
-        content: text,
+        content: `@${replyToUsername}, ${text}`,
         createdAt: new Date(), // change to server timestamp
         score: 0,
         user,
@@ -60,9 +60,9 @@ export const ReplyForm = ({ replyTo, showReplyForm }) => {
               name="Reply"
               className="form__input"
               onChange={(e) =>
-                setText(e.target.value.slice(replyTo.user.username.length + 3))
+                setText(e.target.value.slice(replyToUsername.length + 3))
               }
-              value={`@${replyTo.user.username}, ${text}`}
+              value={`@${replyToUsername}, ${text}`}
               ref={input}
             />
 

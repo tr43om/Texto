@@ -22,6 +22,7 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { ReplyForm } from "./ReplyForm";
 import { RepliesList } from "./RepliesList";
 import { AnimatePresence, motion } from "framer-motion";
+import { Rating } from "../../components/Rating";
 
 export const Comment = ({ id }) => {
   // state
@@ -35,7 +36,7 @@ export const Comment = ({ id }) => {
   const { deleteDocument, updateDocument } = useFirestore("comments");
   const createdAt = useTimePassed(comment);
   const currentUser = useCurrentUser();
-  const { voteUp, voteDown } = useVote(comment);
+  // const { voteUp, voteDown } = useVote(comment);
 
   // Get comment from firestore
   useEffect(() => {
@@ -68,23 +69,12 @@ export const Comment = ({ id }) => {
       {comment && (
         <div className="comment-container">
           <div className="comment">
-            <div className="comment__vote">
-              <button
-                className="comment__vote-up"
-                onClick={voteUp}
-                disabled={currentUser?.uid === comment.user?.uid}
-              >
-                +
-              </button>
-              <span>{comment.score}</span>
-              <button
-                className="comment__vote-down"
-                onClick={voteDown}
-                disabled={currentUser?.uid === comment.user?.uid}
-              >
-                -
-              </button>
-            </div>
+            <Rating
+              comment={comment}
+              isOwnComment={currentUser?.uid === comment.user?.uid}
+              uid={currentUser?.uid}
+              type="comments"
+            />
             <div className="comment__content">
               <img
                 src={comment.user?.image}
@@ -127,6 +117,7 @@ export const Comment = ({ id }) => {
               </div>
               <div className="comment__text">
                 {!update && comment.content}
+
                 {update && (
                   <AnimatePresence>
                     <motion.form
@@ -163,6 +154,7 @@ export const Comment = ({ id }) => {
               replyTo={comment}
               parentComment={comment}
               showReplyForm={setShowReplyForm}
+              replyToUsername={comment.user.username}
             />
           )}
           <div className="comment__replies">

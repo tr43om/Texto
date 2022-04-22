@@ -49,6 +49,7 @@ export const CommentForm = () => {
             onChange={(e) => setText(e.target.value)}
             value={text}
             ref={input}
+            wrap="hard"
           />
 
           <img

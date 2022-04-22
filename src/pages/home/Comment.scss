@@ -23,7 +23,7 @@
     display: flex;
     gap: 0.8rem;
     margin-top: 1rem;
-    padding: 0.5rem 1rem;
+    padding-inline: 1.5rem;
     font-size: 1.2rem;
 
     &-up,
@@ -73,6 +73,7 @@
     font-weight: 500;
     flex-basis: 100%;
     gap: 1rem;
+    white-space: pre-line;
   }
 
   &__accent {
@@ -151,6 +152,8 @@
   }
 
   &__replies {
+    display: grid;
+    gap: 1rem;
     border-left: 2px solid hsl(223, 19%, 93%);
     padding-left: 2rem;
     margin-top: 1rem;

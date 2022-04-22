@@ -19,8 +19,8 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 // components
 import { ReplyForm } from "./ReplyForm";
-import { RepliesList } from "./RepliesList";
-import { useVote } from "../../hooks/useVote";
+
+import { Rating } from "../../components/Rating";
 
 export const Reply = ({ id, comment }) => {
   const [update, setUpdate] = useState(false);
@@ -31,7 +31,6 @@ export const Reply = ({ id, comment }) => {
   const currentUser = useCurrentUser();
 
   const { deleteDocument, updateDocument } = useFirestore("replies");
-  const { voteUp, voteDown } = useVote(reply);
   const createdAt = useTimePassed(reply);
 
   // Get reply from firestore
@@ -60,15 +59,12 @@ export const Reply = ({ id, comment }) => {
       {reply && (
         <>
           <div className="comment">
-            <div className="comment__vote">
-              <button className="comment__vote-up" onClick={voteUp}>
-                +
-              </button>
-              <span>{reply.score}</span>
-              <button className="comment__vote-down" onClick={voteDown}>
-                -
-              </button>
-            </div>
+            <Rating
+              uid={currentUser?.uid}
+              comment={reply}
+              isOwnComment={currentUser?.uid === reply.user?.uid}
+              type={"replies"}
+            />
             <div className="comment__content">
               <img
                 src={reply.user?.image}
@@ -111,9 +107,9 @@ export const Reply = ({ id, comment }) => {
                 {!update && (
                   <div>
                     <span className="comment__accent">
-                      @{comment.user?.username},&nbsp;
+                      {reply.content?.split(",")[0]},&nbsp;
                     </span>
-                    {reply.content}
+                    {reply.content?.split(",")[1]}
                   </div>
                 )}
                 {update && (
@@ -139,13 +135,11 @@ export const Reply = ({ id, comment }) => {
           {showReplyForm && (
             <ReplyForm
               replyTo={comment}
+              replyToUsername={reply.user.username}
               showReplyForm={setShowReplyForm}
               parentComment={comment}
             />
           )}
-          <div className="comment__replies">
-            <RepliesList parentComment={reply} />
-          </div>
         </>
       )}
     </div>

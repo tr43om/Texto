@@ -43,8 +43,6 @@ export const useGoogleLogin = () => {
         setError(null);
       }
     } catch (error) {
-      console.log(auth.AuthCredentials);
-
       if (!isCancelled) {
         setIsPending(false);
         setError(error.message);
